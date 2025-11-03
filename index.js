@@ -22,7 +22,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5174',
   'http://localhost:4000',
-  'https://tienda-rompopes-production.up.railway.app' 
+  'https://tienda-rompopes-production.up.railway.app',
+  'https://tienda-rompopes-admin-production.up.railway.app'
 ];
 
 const corsOptions = {
