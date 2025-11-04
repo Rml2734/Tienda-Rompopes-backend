@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); 
 const path = require('path');
 
 // Cargar variables de entorno para usar la contraseña segura
-require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+//require('dotenv').config({ path: path.join(__dirname, '../../.env') });  //descomentar para uso local
 const adminPassword = process.env.ADMIN_PASSWORD;
 const jwtSecret = process.env.JWT_SECRET; // <-- NUEVO: Obtenemos la clave secreta
 
@@ -48,6 +48,8 @@ router.post('/login', async (req, res) => {
 
         // Comparamos la contraseña enviada con la contraseña segura del .env
         const match = await bcrypt.compare(password, adminPassword);
+        // AGREGAR ESTE CONSOLE.LOG PARA CONFIRMAR QUE EL CÓDIGO YA NO SE BLOQUEA
+        console.log('Resultado de la comparación (Match):', match);
 
         if (match) {
             // Si la contraseña es correcta, generamos el token JWT
