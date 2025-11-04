@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); // <-- NUEVO
+const jwt = require('jsonwebtoken'); 
 const path = require('path');
 
 // Cargar variables de entorno para usar la contraseña segura
