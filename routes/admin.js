@@ -40,6 +40,11 @@ const authenticateAdmin = (req, res, next) => {
 router.post('/login', async (req, res) => {
     try {
         const { password } = req.body;
+        // --- LÍNEA DE DEBUGGING CRÍTICA ---
+        // Esto confirmará que el servidor conoce el hash (se verá en los logs de Railway)
+        console.log('Hash ADMIN_PASSWORD cargado:', adminPassword ? 'Sí' : 'No'); 
+        console.log('Iniciando comparación de contraseña...');
+        // --- FIN LÍNEA DE DEBUGGING ---
 
         // Comparamos la contraseña enviada con la contraseña segura del .env
         const match = await bcrypt.compare(password, adminPassword);
